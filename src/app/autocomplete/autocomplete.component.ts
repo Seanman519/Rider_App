@@ -125,7 +125,7 @@ export class AutocompleteComponent implements OnInit {
         radius: "2000",
         zoom: 15,
         types: ["geocode"],
-        componentRestrictions: { country: [this.avatar.countryCode] },
+        componentRestrictions: { country: ['US'] },
       },
       (predictions, status) => {
         this.autocompleteItems = [];
