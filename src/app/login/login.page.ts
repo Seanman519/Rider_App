@@ -112,12 +112,15 @@ export class LoginPage implements OnInit {
       (await modal).present();
       const data: any = (await modal).onWillDismiss();
       this.authY.onAuthStateChanged(async (user)=>{
-        if (!user){
+        this.avatar.getUserProfile(user).subscribe(async (data) => {
+        if (!data){
        this.router.navigateByUrl('details'); 
         }else{
           this.router.navigateByUrl('home'); 
         }  
        this.overlay.hideLoader();
+
+      })
       })
        console.log(data);
     } catch(e) {

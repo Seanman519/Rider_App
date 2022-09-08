@@ -19,7 +19,7 @@ export class PaymentPage implements OnInit {
   public data: any;
   info: any;
   approve: boolean;
-  stripe = Stripe('pk_test_0t85o0Llo0MbBfC9imSzznam');
+  stripe = Stripe('pk_test_o6ICzDWLE6mSEnsRP8pagCHq');
   card: any;
   cards: any[];
   selectedCard: any;
@@ -78,6 +78,7 @@ export class PaymentPage implements OnInit {
       }
     };
     let elements = this.stripe.elements();
+    if(this.prof.isDark){
     var style = {
       base: {
         color: '#32325d',
@@ -94,6 +95,24 @@ export class PaymentPage implements OnInit {
         iconColor: '#3880ff'
       }
     };
+  }else{
+    var style = {
+      base: {
+        color: '#aab7c4',
+        lineHeight: '24px',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '17px',
+        '::placeholder': {
+          color: '#aab7c4'
+        }
+      },
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#3880ff'
+      }
+    };
+  }
 
     this.card = elements.create('card', { style: style });
     this.card.mount('#card-element');

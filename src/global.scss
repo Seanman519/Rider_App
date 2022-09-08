@@ -37,7 +37,6 @@ ion-header.md {
 
 
 
-
 #inbox-list{
     --ion-background-color: white;
 }
@@ -48,6 +47,10 @@ ion-button{
 
 @media (prefers-color-scheme: dark) {
 ion-content{
+    --ion-background-color: #1e1e1e;
+}
+
+ion-footer{
     --ion-background-color: #1e1e1e;
 }
 

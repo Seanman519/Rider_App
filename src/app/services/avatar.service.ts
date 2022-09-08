@@ -8,6 +8,7 @@ import {
   Storage,
   uploadString,
 } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 import { Photo } from '@capacitor/camera';
 import { distanceBetween, geohashForLocation, geohashQueryBounds} from 'geofire-common';
 import { Observable } from 'rxjs';
@@ -30,12 +31,14 @@ export class AvatarService {
   pathM: string;
   countryCode: any;
   user: import("@angular/fire/auth").User;
+  isDark: boolean;
 
   constructor(
     private auth: Auth,
     public firestore: Firestore,
     private storage: Storage,
     private http: HttpClient,
+    public router: Router,
     private authService: AuthService
   ) {
     this.auth.onAuthStateChanged((user)=>{
@@ -49,7 +52,7 @@ export class AvatarService {
 
       if (this.profile){
       if (!this.profile.Rider_phone)
-      // await this.authService.logout();
+      await this.authService.logout();
 
     
 
@@ -57,16 +60,11 @@ export class AvatarService {
       this.userName = this.profile.Rider_name;
 
       this.pathM = `uploads/${this.profile.uid}/profile.png`;
+      }else{
+        this.router.navigateByUrl('details'); 
       }
      })
-       this.http.get("http://ip-api.com/json").subscribe((res: any) => {
-          
-        console.log('res ', res);
-
-
-        this.countryCode = res.countryCode || 'NG';
-     
-     })
+   
     }else{
       this.userName = "None";
       

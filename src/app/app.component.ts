@@ -68,8 +68,10 @@ export class AppComponent {
 
   toggleDarkTheme(shouldAdd) {
     if (shouldAdd){
+      this.avatar.isDark = false;
       StatusBar.setStyle({ style: Style.Dark });
     }else{
+      this.avatar.isDark = true;
      StatusBar.setStyle({ style: Style.Light });
     }
   }

@@ -77,7 +77,7 @@
           </div>
 
           
-              <ion-button shape="round" size="large" type="submit" [disabled]="!form.get('phone').valid" color="secondary" (click)="signIn()" expand="block">
+              <ion-button shape="round" size="large" type="submit" [disabled]="!form.get('phone').valid" color="warning" (click)="signIn()" expand="block">
                 <ion-label *ngIf="!approve2">Continue</ion-label>
                 <ion-icon *ngIf="!approve2" color='light' slot="end" name="arrow-forward"></ion-icon>
                 <ion-progress-bar *ngIf="approve2" color='light' type="indeterminate"></ion-progress-bar>
